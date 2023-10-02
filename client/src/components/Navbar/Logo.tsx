@@ -7,7 +7,7 @@ export const Logo = () => {
          <div className="flex items-center py-1 cursor-pointer">
             <div className="max-w-[50px] h-[50px] w-[40px] relative aspect-auto ">
                <Image
-                  src={'/ivelogowhite.png'}
+                  src={'/logo1.png'}
                   alt="FreeBookLogo"
                   fill
                   sizes="(max-width: 50px) 100vw"

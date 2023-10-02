@@ -1,13 +1,12 @@
 import React from 'react'
-import { Navbar } from '@/components/Navbar/Navbar'
-import { useRedux } from '../../hooks/useRedux';
-
+import Link from 'next/link';
+import { Button } from '@/components/MainSection/Button';
 const AboutPage: React.FC = () => {
     return (        
         <div className=' bg-dark-100 h-screen '>
-          <section id="about" className="about ">
-            <div className="img-about scroll-scale">
-              <img src="./1681917768006-removebg-preview.png" alt="" />
+          <section  className="about ">
+            <div className="img-about ">
+              <img src="./1681917768006-removebg-preview.png" alt="Profile-Photo" />
               <div className="info-about1">
                 <span>2+</span>
                 <p>Años de experiencia</p>
@@ -22,7 +21,7 @@ const AboutPage: React.FC = () => {
               </div>
             </div>
   
-            <div className="about-content scroll-scale">
+            <div className="about-content">
               <span>Permíteme presentarme</span>
               <h2>Acerca de mí</h2>
               <h3>Conoce mi historia</h3>
@@ -36,7 +35,13 @@ const AboutPage: React.FC = () => {
               </p>
             </div>
           </section>
+          <Link href="/">
+              <div className="flex justify-center ">
+                  <button className='text-white' >Volver al inicio</button>
+              </div>
+          </Link>
         </div>
+
     );
   };
   

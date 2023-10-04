@@ -6,6 +6,7 @@ import hasMoreReducer from '@/redux/reducers/hasMore';
 import commentReducer from '@/redux/reducers/comment.slice';
 import profilePostsReducer from '@/redux/reducers/profilePosts.slice';
 
+
 const store = configureStore({
    reducer: {
       auth: authReducer,

@@ -19,7 +19,8 @@ from django.db.models.query_utils import Q
 from .pagination import CustomPagination
 from .models import User
 from django.http import JsonResponse
-
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
 
 
 def staff_required(view_func):
@@ -156,3 +157,35 @@ class UserLoggedDataView(APIView):
         user = request.user
         user_serializer = UserLoggedSerializer(user)
         return Response(user_serializer.data, status=status.HTTP_200_OK)
+
+
+#Update Image
+
+# @api_view(['POST'])
+# @permission_classes([IsAuthenticated])
+# def update_profile_image(request):
+#     user = request.user
+#     new_image = request.FILES.get('image')  
+
+#     if new_image:
+#         user.image = new_image
+#         user.save()
+#         print(new_image)
+#         return Response({'message': 'Profile image updated successfully'}, status=status.HTTP_200_OK)
+#     else:
+#         return Response({'error': 'No image provided'}, status=status.HTTP_400_BAD_REQUEST) 
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def update_profile_image(request):
+    user = request.user
+    new_image = request.FILES.get('image')
+
+    if new_image:
+        user.image = new_image
+        user.save()
+        updated_image_url = user.image.url 
+        return Response({'message': 'Profile image updated successfully', 'image_url': updated_image_url}, status=status.HTTP_200_OK)
+    else:
+        return Response({'error': 'No image provided'}, status=status.HTTP_400_BAD_REQUEST)
